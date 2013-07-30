@@ -112,7 +112,7 @@ $ open http://127.0.0.1:5000
 ```
 
 ### Heroku
-
+METRICS_UPDATE_ON_BOOT should be set for Heroku due to their 60 second startup policy
 ```bash
 $ export DEPLOY=production/staging/you
 $ heroku create -r $DEPLOY -s cedar
@@ -122,6 +122,7 @@ $ heroku config:set -r $DEPLOY OAUTH_PROVIDER=...
 $ heroku config:set -r $DEPLOY <auth provider tokens>=...
 $ heroku config:set -r $DEPLOY GRAPHITE_URL=...
 $ heroku config:set -r $DEPLOY METRICS_UPDATE_INTERVAL=1h
+$ heroku config:set -r $DEPLOY METRICS_UPDATE_ON_BOOT=false
 $ heroku config:set -r $DEPLOY SESSION_SECRET...
 $ heroku config:set -r $DEPLOY RAKE_ENV=production
 $ git push $DEPLOY master
