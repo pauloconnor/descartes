@@ -25,6 +25,7 @@ module Descartes
     require 'descartes/routes/favorites'
     require 'descartes/routes/chartroulette'
     require 'descartes/routes/cats'
+    require 'descartes/routes/users'
 
     get '/' do
       haml :index

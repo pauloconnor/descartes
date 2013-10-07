@@ -1,62 +1,63 @@
-.header
+.page-header
   %h1 Graphs
-  %form{ :class => "search", :action => "" }
-    %i.reset-search.icon-remove-circle
-    %input{ :class => "search-query span2", :type => "text", :name => "tags", :placeholder => "Search graphs" }
+  //%form{ :role => "form", :class => "col-md-3 search form-group form-inline", :action => "" }
+  //  .input-group
+  //    .input-group-addon.reset-search.glyphicon.glyphicon-remove-circle
+  //    %input{ :class => "form-control", :type => "text", :name => "tags", :placeholder => "Search graphs" }
 .well
-  %a{ :class => "import btn", :"data-toggle" => "collapse", :"data-target" => "#import_form", :href => "#" } Import Graphs
-  %a{ :class => "dashboard btn", :"data-toggle" => "collapse", :"data-target" => "#dashboard_form", :href => "#" } Add to Dashboard
+  %a{ :class => "import btn btn-default", :"data-toggle" => "collapse", :"data-target" => "#import_form", :href => "#" } Import Graphs
+  %a{ :class => "dashboard btn btn-default", :"data-toggle" => "collapse", :"data-target" => "#dashboard_form", :href => "#" } Add to Dashboard
   .tools.btn-group
-    %button{ :class => "tools btn reset", :title => "reset view" }
-      %i.icon-fire
-    %button{ :class => "tools btn refresh", :title => "refresh graphs" }
-      %i.icon-refresh
-    %a{ :class => "tools btn trash", :"data-toggle" => "collapse", :"data-target" => "#destroy_form", :href => "#" }
-      %i.icon-trash
-    %button{ :class => "tools btn nightmode", :title => "nightmode" }
-      %i.icon-eye-close
+    %button{ :class => "tools btn btn-default reset", :type => "button", :title => "reset view" }
+      %span.glyphicon.glyphicon-fire
+    %button{ :class => "tools btn btn-default refresh", :title => "refresh graphs" }
+      %span.glyphicon.glyphicon-refresh
+    %button{ :class => "tools btn btn-default trash", :"data-toggle" => "collapse", :"data-target" => "#destroy_form", :href => "#" }
+      %span.glyphicon.glyphicon-trash
+    %button{ :class => "tools btn btn-default nightmode", :title => "nightmode" }
+      %span.glyphicon.glyphicon-eye-close
   = haml :"common/_columns"
   = haml :"common/_interval"
   = haml :"common/_sort"
 .accordion-group
   / Form for deleting graphs
   %fieldset#destroy_form{ :class => "collapse" }
-    #destroy_warning.span9.offset1
-      %ul.span8
-        %li.span4.offset1
+    #destroy_warning.col-md-12.col-md-offset-1
+      %ul.col-md-10
+        %li.col-md-6.col-md-offset-1
           %span
             You have enabled a destructive mode. Click to select any graphs you wish to delete, then click the button to the right.
-        %li.span2
-          %button{ :class => "destroy_submit btn btn-danger btn-large" } Delete Graphs
+        %li.col-md-2
+          %button{ :class => "destroy_submit btn btn-default btn-danger btn-large" } Delete Graphs
   / Forms for importing graphs from saved / by url
-  %fieldset#import_form{ :class => "collapse" }
+  %fieldset#import_form{ :class => "collapse form-group form-inline" }
     %form{ :id => "graph_select", :method => "post", :action => "/graphs" }
       %ul
         %li
           %select{ :id => "node", :name => "node[]", :multiple => "multiple" }
         %li
-          %button{ :class => "import_submit btn btn-primary", :name => "submit", :type => "submit" } Import Saved Graphs
+          %button{ :class => "import_submit btn btn-default btn-primary", :name => "submit", :type => "submit" } Import Saved Graphs
     %form{ :id => "graph_url", :method => "post", :action => "/graphs" }
       %ul
         %li
-          %button{ :class => "import_submit btn btn-primary", :name => "submit", :type => "submit" } Import from URL
+          %button{ :class => "import_submit btn btn-default btn-primary", :name => "submit", :type => "submit" } Import from URL
         %li
-          %input{ :class => "graph_url span3", :id => "node", :name => "node[]", :placeholder => "Graph URL" }
+          %spaninput{ :class => "graph_url col-md-3", :id => "node", :name => "node[]", :placeholder => "Graph URL" }
   / Forms for creating / adding-to dashboards
-  %fieldset#dashboard_form{ :class => "collapse" }
+  %fieldset#dashboard_form{ :class => "collapse form-group" }
     #dashboard_select
       %ul
         %li
           %select{ :id => "dashboard_select", :name => "dashboard_select" }
         %li
-          %button{ :class => "dashboard_submit btn btn-primary" } Add to Selected Dashboard
+          %button{ :class => "dashboard_submit btn btn-default btn-primary" } Add to Selected Dashboard
     #dashboard_new
       %form{ :id => "dashboard_new", :method => "post", :action => "/dashboards" }
         %ul
           %li
-            %input{ :class => "dashboard_name span3", :id => "name", :name => "name", :placeholder => "Dashboard Name" }
+            %spaninput{ :class => "dashboard_name col-md-3", :id => "name", :name => "name", :placeholder => "Dashboard Name" }
           %li
-            %button{ :class => "dashboard_submit btn btn-primary", :name => "submit", :type => "submit" } Create Dashboard
+            %button{ :class => "dashboard_submit btn btn-default btn-primary", :name => "submit", :type => "submit" } Create Dashboard
 .graphs
 %script{ :type => "text/javascript", :src => "/js/render-graph.js" }
 %script{ :type => "text/javascript", :src => "/js/render-common.js" }

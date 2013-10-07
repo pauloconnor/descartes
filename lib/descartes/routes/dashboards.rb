@@ -14,7 +14,7 @@ module Descartes
         content_type 'application/json'
         @dashboards.flatten.to_json
       else
-        haml :'dashboards/index', :locals => { :title => 'Descartes - Dashboard List' }
+        haml :'dashboards/index', :locals => { :title => 'Descartes - Dashboard List', :user_name => 'Paul' }
       end
     end
 

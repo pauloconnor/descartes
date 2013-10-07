@@ -18,7 +18,7 @@ class User < Sequel::Model
 
   def before_create
     super
-    self.preferences = {:favorites => []}.to_json
+    self.preferences = {:favorites => [], :settings => {"cat_mode" => false, "fluid_fullscreen" => false, "night_mode" => false}}.to_json
     self.token = SecureRandom.hex(32)
     self.created_at = Time.now
     self.updated_at = Time.now
@@ -30,11 +30,21 @@ class User < Sequel::Model
   end
 
   def self.find_or_create_by_uid(user)
-    User.filter(:uid => user['uid']).first or User.new(:uid => user['uid'], :email => user['email']).save
+    User.filter(:uid => user['uid']).first or User.new(:uid => user['uid'], :name => user['name'], :email => user['email']).save
   end
 
   def favorites
     JSON.parse(self.preferences)['favorites']
+  end
+
+  def settings
+    JSON.parse(self.preferences)['settings']
+  end
+
+  def save_settings(settings)
+    preferences['settings'] = settings
+    self.preferences = preferences.to_json
+    self.save
   end
 
   def add_favorite(uuid)

@@ -1,4 +1,4 @@
-.header
+.page-header
   %h1.locked= graph[:name]
   /%span.info Created by <span class="owner">#{graph[:owner]}</span> on #{graph[:created_at]}
 .well
@@ -6,17 +6,17 @@
   %a{ :class => "dashboard btn", :"data-toggle" => "collapse", :"data-target" => "#dashboard_form", :href => "#" } Add to Dashboard
   .tools.btn-group
     %button{ :class => "tools btn edit", :title => "edit targets" }
-      %i.icon-list
+      %span.glyphicon.glyphicon-list
     %button{ :class => "tools btn reset", :title => "reset view" }
-      %i.icon-fire
+      %span.glyphicon.glyphicon-fire
     %button{ :class => "tools btn refresh", :title => "refresh graph" }
-      %i.icon-refresh
+      %span.glyphicon.glyphicon-refresh
     /%button{ :class => "tools btn gist", :title => "gist graph" }
-    /  %i.icon-camera
+    /  %span.glyphicon.glyphicon-camera
     %button{ :class => "tools btn delete", :title => "delete graph", :"data-toggle" => "modal", :"data-target" => "#destroy_modal" }
-      %i.icon-trash
+      %span.glyphicon.glyphicon-trash
     %button{ :class => "tools btn nightmode", :title => "nightmode" }
-      %i.icon-eye-close
+      %span.glyphicon.glyphicon-eye-close
   = haml :"common/_interval"
 / Destroy graph modal
 .modal#destroy_modal{ :class => "hide fade" }
@@ -34,9 +34,9 @@
     %button{ :class => "close", :"data-dismiss" => "modal", :"aria-hidden" => true } &times
     %h2 Edit Graph Targets
   .modal-body
-    %img#preview.span8
+    %spanmg#preview.col-md-8
     %label{ :for => "targets_editor" } Targets:
-    %textarea#targets_editor.span8
+    %textarea#targets_editor.col-md-8
   .modal-footer
     %button{ :class => "btn", :"data-dismiss" => "modal", :"aria-hidden" => true } Cancel
     %button{ :class => "targets_submit btn btn-primary" } Update Targets
@@ -98,7 +98,7 @@
       %form{ :id => "dashboard_new", :method => "post", :action => "/dashboards" }
         %ul
           %li
-            %input{ :class => "dashboard_name span3", :id => "name", :name => "name", :placeholder => "Dashboard Name" }
+            %spannput{ :class => "dashboard_name col-md-3", :id => "name", :name => "name", :placeholder => "Dashboard Name" }
           %li
             %button{ :class => "dashboard_submit btn btn-primary", :name => "submit", :type => "submit" } Create Dashboard
 .graphs

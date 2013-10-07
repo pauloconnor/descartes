@@ -18,6 +18,7 @@ module Descartes
           email = info['email'].is_a?(Array) ? info['email'].first : info['email']
           session['user'] = {
             'uid'   => env['omniauth.auth']['uid'].split('id=')[-1],
+            'name'  => 'Descartes Google',
             'email' => email.downcase
           }
         end

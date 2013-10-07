@@ -1,30 +1,31 @@
 - unless fullscreen
-  .header
+  .page-header
     %span.star
       %a.inactive{ :href => "#" } &#9734
     %h1.locked= dashboard[:name]
     %form{ :class => "search pull-left", :action => "" }
-      %i.reset-search.icon-remove-circle
-      %input{ :class => "search-query span2", :type => "text", :name => "search", :placeholder => "search graphs" }
+      %span.reset-search.glyphicon.glyphicon-remove-circle
+      %span.input-group
+      %input{ :class => "form-control search-query col-md-2", :type => "text", :name => "search", :placeholder => "search graphs" }
   .well
     .tools.btn-group
       %button{ :class => "tools btn reset", :title => "reset view" }
-        %i.icon-fire
+        %span.glyphicon.glyphicon-fire
       %button{ :class => "tools btn refresh", :title => "refresh graphs" }
-        %i.icon-refresh
+        %span.glyphicon.glyphicon-refresh
       %button{ :class => "tools btn fullscreen", :title => "fullscreen view" }
-        %i.icon-fullscreen
+        %span.glyphicon.glyphicon-fullscreen
       %a{ :class => "tools btn trash", :"data-toggle" => "collapse", :"data-target" => "#destroy_form", :href => "#" }
-        %i.icon-trash
+        %span.glyphicon.glyphicon-trash
       %button{ :class => "tools btn nightmode", :title => "nightmode" }
-        %i.icon-eye-close
+        %span.glyphicon.glyphicon-eye-close
     = haml :"common/_columns"
     = haml :"common/_interval"
     = haml :"common/_sort"
   .accordion-group
     / Form for deleting graphs
     %fieldset#destroy_form{ :class => "collapse" }
-      #destroy_warning.span9.offset1
+      #destroy_warning.col-md-9.offset1
         %ul.span8
           %li.span4.offset1
             %span
@@ -34,7 +35,7 @@
             .destroy_all
               %label{ :class => "checkbox", :for => "destroy_all" }
                 Entire Dashboard
-                %input{ :type => "checkbox", :name => "destroy_all" }
+                %spannput{ :type => "checkbox", :name => "destroy_all" }
 - else
   %h1.fullscreen= dashboard[:name]
 .graphs
