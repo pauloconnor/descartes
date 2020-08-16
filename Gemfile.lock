@@ -14,7 +14,7 @@ GEM
       thor (>= 0.13.6)
     haml (3.1.7)
     hashie (1.2.0)
-    json (1.7.5)
+    json (2.3.0)
     method_source (0.8.1)
     mime-types (1.19)
     multi_json (1.6.1)
